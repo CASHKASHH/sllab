@@ -7,7 +7,7 @@ df.head()
 df.describe()
 df = df.drop(['lunch'], axis=1,inplace = False)
 df.head()
-df["race/ethnicity"]= df["race/ethnicity"].map({"group A : "Asian",
+df["race/ethnicity"]= df["race/ethnicity"].map({"group A" : "Asian",
 "group B" : "African students",
 	"group C" : "Afro-Asian students",
 	"group D" : "American students",
@@ -26,11 +26,11 @@ df["Marks_cats"]=pd.cut(df.mathscore,interval,labels=categories)
 ax=sns.countplot(x="Marks_cats",hue="gender",palette="Set1",data=df)
 ax.set(title="Marks categorisation for math",xlabel="Categories",ylabel="Number of students")
 plt.show()
-stuperf_df["Marks_Cats"]=pd.cut(stuperf_df.readingscore,interval,labels=categories)
+df["Marks_Cats"]=pd.cut(df["reading score"],interval,labels=categories)
 ax=sns.countplot(x="Marks_Cats",hue="gender",palette="Set1",data=df)
 ax.set(title="Marks categorisation for reading",xlabel="Categories",ylabel="Number of students")
 plt.show()
-stuperf_df["Marks_Cats"]=pd.cut(stuperf_df.writingscore,interval,labels=categories)
+df["Marks_Cats"]=pd.cut(df["writing score"],interval,labels=categories)
 ax=sns.countplot(x="Marks_Cats",hue="gender",palette="Set1",data=df)
 ax.set(title="Marks categorisation for writing",xlabel="Categories",ylabel="Number of students")
 plt.show()
