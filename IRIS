@@ -1,0 +1,11 @@
+import seaborn as sns
+import matplotlib.pyplot as plt
+import pandas as pd
+df = pd.read_csv('iris.csv')
+df.head(5)
+df.describe()
+df.info()
+df.drop(['Sepal_Length'], inplace=True,axis=1)
+df.head(5)
+ndf.groupby(['Class'],as_index=False).mean()"""
+
