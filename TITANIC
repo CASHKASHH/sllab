@@ -1,0 +1,52 @@
+TITANIC:
+import seaborn as sns
+import matplotlib.pyplot as plt
+import pandas as pd
+df = pd.read_csv('titanictrain.csv')
+df.head()
+df ['Survived'] =df ['Survived'].map({
+    0: 'Died',
+    1: 'Survived'
+})
+df.head(5)
+df.drop(['Parch','PassengerId','Name','Ticket'], axis=1, inplace=True)
+df.head(5)
+df = df.drop(['SibSp','Fare'], axis=1)
+df.head(5)
+df ['Pclass'] = df ['Pclass'].map({
+    1: 'Luxury Class',
+    2: 'Economy Class',
+    3: 'Lower Class'
+})
+df.head(5)
+df["Embarked"] =df["Embarked"].fillna("S")
+df.head(5)
+df ['Embarked'] = df ['Embarked'].map({
+    'C':'Cherbourg',
+    'Q':'Queenstown',
+    'S':'Southampton'
+})
+df.head(5)
+ax = sns.countplot(x = 'Pclass', hue = 'Survived', palette = 'Set1',data =df)
+ax.set(title = 'Passenger status (Survived/Died) against Passenger Class',
+       xlabel = 'Passenger Class', ylabel = 'Total')
+plt.show() 
+print(pd.crosstab(df['Sex'],df.Survived))
+ax=sns.countplot(x='Sex',hue='Survived',palette='Set2',data=df)
+ax.set(title='Gender based',xlabel='Sex',ylabel='Total')
+plt.show()
+interval = (0,18,35,60,120)
+categories = ['Children','Teen','Adult','Old']
+df["Age_categories"]=pd.cut(df.Age,interval,labels=categories)
+ax = sns.countplot(x="Age_categories",data=df,hue='Survived',palette='Set3')
+ax.set(xlabel='Age cats',ylabel='Total',title="age cats")
+print(pd.crosstab(df['Age_categories'],df.Survived))
+plt.show()
+ax = sns.countplot(x='Embarked',hue='Survived',palette='Set1',data=df)
+ax.set(title='Survival acording to Embarking Place')
+plt.show()
+
+
+     
+
+
