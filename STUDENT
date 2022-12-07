@@ -6,6 +6,7 @@ df=pd.read_csv('StudentsPerformance.csv')
 df.head()
 df.describe()
 df = df.drop(['lunch'], axis=1,inplace = False)
+df.head()
 df["race/ethnicity"]= df["race/ethnicity"].map({"group A : "Asian",
 "group B" : "African students",
 	"group C" : "Afro-Asian students",
